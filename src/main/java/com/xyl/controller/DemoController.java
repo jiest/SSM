@@ -1,5 +1,8 @@
 package com.xyl.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -40,9 +43,18 @@ public class DemoController extends BaseController{
 		return demoService.getAccountById(accountId);
 	}
 	
+	@GetMapping(value="/getData")
+	@ResponseBody
+	public List<Map<String, Object>> getData(){
+		List<Map<String, Object>> data = demoService.getData();
+		//System.out.println(data instanceof List);
+		return data;
+	}
 	
-	public static void main(String[] args){  
-		SpringApplication.run(DemoController.class, args);  
-
-	}  
+ 
+	@GetMapping(value="/accountList")
+	@ResponseBody
+	public List<Account> getAccountListByAddTime(@RequestParam("addTime")String addTime){
+		return demoService.getAccountListByAddTime(addTime);
+	}
 }

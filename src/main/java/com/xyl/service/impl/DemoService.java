@@ -2,6 +2,8 @@ package com.xyl.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +28,11 @@ public class DemoService extends BaseService implements IDemoService{
 		return demoDao.getAccountById(accountId);
 	}
 	
+	public List<Map<String, Object>> getData(){
+		return demoDao.getData();
+	}
 	
+	public List<Account> getAccountListByAddTime(String addTime){
+		return demoDao.getAccountListByAddTime(addTime);
+	}
 }

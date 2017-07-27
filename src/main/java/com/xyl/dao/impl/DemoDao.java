@@ -1,5 +1,6 @@
 package com.xyl.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
@@ -20,7 +21,12 @@ public class DemoDao extends BaseDao implements IDemoDao {
 		return demoMapper.getAccountById(accountId);
 	}
 	
-	public Map<String, Object> getData(){
+	
+	public List<Map<String, Object>> getData(){
 		return demoMapper.getData();
+	}
+	
+	public List<Account> getAccountListByAddTime(String addTime){
+		return demoMapper.getAccountListByAddTime(addTime);
 	}
 }
