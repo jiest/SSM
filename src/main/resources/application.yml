@@ -1,3 +1,4 @@
+#注意不要用tab按键，而是要用空格键隔开    以下——    ——
 spring:
     datasource:
         name: logistic
@@ -20,3 +21,24 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+    activemq: 
+        broker-url: tcp://mq.56xyl.com:61616
+        user: admin
+        password: admin
+        pool:
+            enabled: true
+            max-connections: 50
+            expiry-timeout: 10000
+            idle-timeout: 30000    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xyl.bean.Account;
+import com.xyl.sender.DemoSender;
 import com.xyl.service.IDemoService;
 
 @Controller 				//@RestController 因为我们例子是写一个web应用，因此写的这个注解，这个注解相当于同时添加@Controller和@ResponseBody注解。
@@ -23,6 +23,9 @@ public class DemoController extends BaseController{
 	
 	@Autowired
 	IDemoService demoService;
+	
+	@Autowired
+	DemoSender demoSender;
 	
 	@RequestMapping(value ="/home", method = RequestMethod.GET)  
 	@ResponseBody  
@@ -56,5 +59,13 @@ public class DemoController extends BaseController{
 	@ResponseBody
 	public List<Account> getAccountListByAddTime(@RequestParam("addTime")String addTime){
 		return demoService.getAccountListByAddTime(addTime);
+	}
+	
+	
+	@GetMapping(value="/sendJMS")
+	@ResponseBody
+	public String sendJMS(@RequestParam("msg")String msg){
+		demoSender.sendMessage(msg);
+		return "发送成功,消息为:" + msg;
 	}
 }
