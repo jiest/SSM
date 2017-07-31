@@ -93,6 +93,12 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-pool</artifactId>
 		</dependency>
+
+		<!-- spring thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 	</dependencies>
 
 	<!-- Spring Boot也提供了一个可选的 Maven Plugin来创建可执行的jars -->
